@@ -27,4 +27,26 @@
     <% end %>
     </tbody>
   </table>
+  <div class="modal fade" id="messageModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"></h5>
+          <button type="button" class="close" onClick="console.info('logging'); " data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <%= form_tag(controller: 'home', action: 'send_message', method: 'post', class: 'modal-content') do %>
+            <div class="modal-body">
+              <input id="id" name="id" type="hidden"/>
+              <textarea class="message-input" name="message"></textarea>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-primary">Send</button>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
