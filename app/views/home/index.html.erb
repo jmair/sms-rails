@@ -1,2 +1,30 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1>Your Contacts:</h1>
+<div class="col-sm-6">
+  <table class="table">
+    <thead>
+    <tr>
+      <td>First Name</td>
+      <td>Last Name</td>
+      <td></td>
+    </tr>
+    </thead>
+    <tbody>
+    <% @contacts.each do |contact| %>
+        <tr>
+          <td><%= contact[:first_name] %></td>
+          <td><%= contact[:last_name] %></td>
+          <td>
+            <button class="btn" data-toggle="modal"
+                    data-target="#messageModal"
+                    data-id="<%= contact[:id] %>"
+                    data-first="<%= contact[:first_name] %>"
+                    data-last="<%= contact[:last_name] %>"
+            >
+              Send Message -&gt;
+            </button>
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

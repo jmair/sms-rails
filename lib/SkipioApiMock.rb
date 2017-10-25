@@ -7,7 +7,7 @@ end
 module SkipioApiMock
 
   def self.get_contacts(page, per)
-    '{
+    JSON.parse('{
       "meta": {
         "current_page": 1,
         "total_pages": 3,
@@ -554,7 +554,7 @@ module SkipioApiMock
           "campaign_ids": {}
         }
       ]
-    }'.as_json
+    }')
   end
 
   def self.send_message(id, message)
