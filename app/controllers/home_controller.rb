@@ -1,4 +1,4 @@
-require 'skipioapimock'
+require 'skipioapi'
 
 class HomeController < ApplicationController
   before_action :fetch_contacts, only: [:index, :send_message]
@@ -10,7 +10,7 @@ class HomeController < ApplicationController
     if params[:message].blank?
       redirect_to root_path, notice: 'Message is blank, and was not sent.'
     else
-      if SkipioApiMock.send_message(params[:id], params[:message]).code == 201
+      if SkipioApi.send_message(params[:id], params[:message]).code == 201
         redirect_to root_path, notice: 'Message was sent.'
       else
         redirect_to root_path, notice: 'Sorry there was an issue, message was not sent.'
@@ -24,7 +24,7 @@ class HomeController < ApplicationController
     page = params[:page].present? ? params[:page] : 1
     contacts_per_page = 10
 
-    result = SkipioApiMock.get_contacts(page, contacts_per_page)
+    result = SkipioApi.get_contacts(page, contacts_per_page)
 
     @meta = result['meta']
     data = result['data']
