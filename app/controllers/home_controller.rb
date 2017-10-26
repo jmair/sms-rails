@@ -8,9 +8,9 @@ class HomeController < ApplicationController
 
   def send_message
     if params[:message].blank?
-      redirect_to root_path, notice: 'Message was blank.'
+      redirect_to root_path, notice: 'Message is blank, and was not sent.'
     else
-      if SkipioApi.send_message(params[:id], params[:message]).code == 201
+      if SkipioApiMock.send_message(params[:id], params[:message]).code == 201
         redirect_to root_path, notice: 'Message was sent.'
       else
         redirect_to root_path, notice: 'Sorry there was an issue, message was not sent.'
