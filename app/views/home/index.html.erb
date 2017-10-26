@@ -2,16 +2,10 @@
 <div>Page: <%= @meta['current_page'] %>
   <%= page_status @meta %>
   <div class="inline <%= display_previous(@meta) %>">
-    <%= form_tag(paginating_path, class: 'inline') do %>
-        <input type="hidden" name="page" value="<%= @meta['current_page'] - 1 %>">
-        <button class="btn" type="submit">Previous</button>
-    <% end %>
+        <%= button_to 'Previous', {action: 'index', page: @meta['current_page'] - 1 }, class: 'btn' %>
   </div>
   <div class="inline <%= display_next(@meta) %>">
-    <%= form_tag(paginating_path, class: 'inline') do %>
-        <input type="hidden" name="page" value="<%= @meta['current_page'] + 1 %>">
-        <button class="btn" type="submit">Next</button>
-    <% end %>
+    <%= button_to 'Next', {action: 'index', page: @meta['current_page'] + 1 }, class: 'btn' %>
   </div>
 </div>
 <div class="col-sm-6">
